@@ -2,6 +2,10 @@
 
 public class Solution {
     public IList<IList<int>> ThreeSum(int[] nums) {
+        if (nums == null || nums.Length < 3) {
+            return -1;
+        }
+
         Array.Sort(nums);
         List<IList<int>> solutions = new List<IList<int>>();
         const int target = 0;
