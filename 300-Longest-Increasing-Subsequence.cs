@@ -18,7 +18,7 @@ public class Solution {
         
         // Start our subsequence at every element after the first  
         // We're going to build up our length lookup table by testing
-        // if this num is less than each number before it in order to build
+        // if this num is greater than each number before it in order to build
         // up the longest sub-sequences possible at each position.
         for (int i = 1; i < nums.Length; i++) {   
             
