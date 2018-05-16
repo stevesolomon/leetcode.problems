@@ -44,6 +44,10 @@ public class Solution {
         
         bestSolSoFar = Math.Max(maxPathValWithRoot, bestSolSoFar);
         
+        // We don't return maxPathValWithRoot here, as when we move on to the parent node, including both paths
+        // in the summed up value would result in us generating a path where a node would have to be revisited.
+        // Instead we return the max of either path from this root, while the bestSolSoFar value is free
+        // to consider what happens if we use this entire subtree.
         return Math.Max(maxPathLeft, maxPathRight) + root.val;      
     }
 }
