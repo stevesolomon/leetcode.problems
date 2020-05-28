@@ -1,5 +1,4 @@
 // https://leetcode.com/explore/featured/card/may-leetcoding-challenge/537/week-4-may-22nd-may-28th/3342/
-// Note this solution doesn't quite work in all cases
 
 public class Solution {
     public bool PossibleBipartition(int N, int[][] dislikes) {
@@ -28,7 +27,13 @@ public class Solution {
                 edges.Add(source, new List<int>());
             }
             
+            if (!edges.ContainsKey(dest)) {
+                edges.Add(dest, new List<int>());
+            }
+            
+            // This is an undirected graph so add edges going both ways.
             edges[source].Add(dest);
+            edges[dest].Add(source);
         }
         
         for (int i = 1; i <= N; i++) {
@@ -52,7 +57,7 @@ public class Solution {
                 if (!edges.ContainsKey(source)) {
                     continue;
                 }
-                
+                                
                 foreach (var dest in edges[source]) {
                     
                     // Check if we have a coloring violation.
@@ -61,7 +66,6 @@ public class Solution {
                             return false;
                         }
                         
-                        colored[dest] = !colored[source];
                         continue;
                     }
                     
